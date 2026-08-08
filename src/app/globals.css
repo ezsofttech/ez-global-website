@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('../components/lib/fonts/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('../components/lib/fonts/GeistMono-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-plus-jakarta: 'Plus Jakarta Sans', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+  --font-geist-mono: 'Geist Mono', monospace;
+  --font-handwriting: 'Caveat', cursive;
+}
+
+:root {
+  --font-family: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'Geist Mono', monospace;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+body,
+h1 {
+  font-family: var(--font-family);
+}
+
+/* From Uiverse.io by shah1345 - Customized for semi-transparency and black hover transition */
+.button2 {
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: #ffffff;
+  padding: 0.8em 0.9em;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 9999px;
+  /* Capsule shape */
+  background: rgba(0, 0, 0, 0.2);
+  /* Semi-transparent dark background */
+  font-family: var(--font-mono);
+}
+
+.button2:active {
+  color: rgba(255, 255, 255, 0.8);
+  transform: scale(0.97);
+}
+
+.button2:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #000000;
+  /* Transition to solid black */
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.button2:hover {
+  color: #ffffff;
+
+}
+
+.button2:hover:before {
+  top: -35%;
+  background-color: #000000;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.button2:hover:after {
+  top: -45%;
+  background-color: #000000;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+/* From Uiverse.io by adamgiebl */
+.cssbuttons-io-button {
+  background: #025ef2;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 3em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #3C83F6;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+  font-family: var(--font-mono);
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 3em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #3C83F6;
+  right: 0.3em;
+  transition: all 0.3s
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #3C83F6;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
+}
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+@theme {
+  --animate-scroll: scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite;
+ 
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+}
+
+.btn-uiverse-mother {
+  font-weight: bold;
+  color: white;
+  border-radius: 2rem;
+  cursor: pointer;
+  width: auto;
+  min-width: 125px;
+  height: 44px;
+  padding: 0 1.5rem;
+  border: none;
+  background-color: #3C83F6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-uiverse-mother .span-mother {
+  display: flex;
+  overflow: hidden;
+}
+
+.btn-uiverse-mother:hover .span-mother {
+  position: absolute;
+}
+
+.btn-uiverse-mother:hover .span-mother span {
+  transform: translateY(1.2em);
+}
+
+.btn-uiverse-mother .span-mother2 {
+  display: flex;
+  position: absolute;
+  overflow: hidden;
+}
+
+.btn-uiverse-mother .span-mother2 span {
+  transform: translateY(-1.2em);
+}
+
+.btn-uiverse-mother:hover .span-mother2 span {
+  transform: translateY(0);
+}
+/* ── Expertise card artwork ───────────────────────────────────────────────
+   Layered, looping motion for the inline SVG scenes in the "What We Do"
+   section. Each scene combines several of these so the illustration keeps
+   revealing something rather than repeating one gesture.
+
+   Everything animates transform / opacity / stroke-dashoffset only, so the
+   whole section stays on the compositor. All motion is disabled under
+   prefers-reduced-motion.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@keyframes ex-float   { 0%,100%{transform:translateY(0)}   50%{transform:translateY(-6px)} }
+@keyframes ex-float-s { 0%,100%{transform:translateY(0)}   50%{transform:translateY(-3px)} }
+@keyframes ex-dash    { to{stroke-dashoffset:-44} }
+@keyframes ex-draw    { 0%{stroke-dashoffset:320} 55%,100%{stroke-dashoffset:0} }
+@keyframes ex-spin    { to{transform:rotate(360deg)} }
+@keyframes ex-spin-rev{ to{transform:rotate(-360deg)} }
+@keyframes ex-blink   { 0%,45%{opacity:1} 55%,100%{opacity:.2} }
+
+/* Background halo — own keyframe, because a CSS animation overrides the SVG
+   `opacity` attribute and a stronger range would swamp the artwork above it. */
+@keyframes ex-halo    { 0%,100%{opacity:.06;transform:scale(1)} 50%{opacity:.11;transform:scale(1.06)} }
+
+/* accent dot breathing */
+@keyframes ex-pulse   { 0%,100%{opacity:.3;transform:scale(1)} 50%{opacity:.75;transform:scale(1.12)} }
+/* expanding sonar ring */
+@keyframes ex-ping    { 0%{transform:scale(.4);opacity:.55} 80%,100%{transform:scale(1.9);opacity:0} }
+/* badge / tick popping into place then resting */
+@keyframes ex-pop     { 0%,12%{transform:scale(0);opacity:0} 26%{transform:scale(1.15);opacity:1} 34%,88%{transform:scale(1);opacity:1} 100%{transform:scale(1);opacity:1} }
+/* a bar growing then settling */
+@keyframes ex-bar     { 0%,100%{transform:scaleY(.45)} 50%{transform:scaleY(1)} }
+/* text/line being typed out */
+@keyframes ex-type    { 0%{transform:scaleX(0)} 45%,60%{transform:scaleX(1)} 100%{transform:scaleX(0)} }
+/* scan line sweeping down a panel */
+@keyframes ex-scan    { 0%{transform:translateY(0);opacity:0} 12%,72%{opacity:.85} 100%{transform:translateY(74px);opacity:0} }
+/* item riding a conveyor left → right */
+@keyframes ex-feed    { 0%{transform:translateX(0);opacity:0} 14%,60%{opacity:1} 100%{transform:translateX(96px);opacity:0} }
+/* item dropping into place */
+@keyframes ex-drop    { 0%{transform:translateY(-26px);opacity:0} 30%,80%{transform:translateY(0);opacity:1} 100%{transform:translateY(0);opacity:0} }
+/* gentle rocking */
+@keyframes ex-swing   { 0%,100%{transform:rotate(-5deg)} 50%{transform:rotate(5deg)} }
+/* rider travelling a delivery route */
+@keyframes ex-travel  { 0%{offset-distance:0%} 100%{offset-distance:100%} }
+/* highlight sliding down a nav list */
+@keyframes ex-nav     { 0%,100%{transform:translateY(0)} 33%{transform:translateY(18px)} 66%{transform:translateY(36px)} }
+/* stacked row cycling upward */
+@keyframes ex-stack   { 0%{transform:translateY(14px);opacity:0} 20%,80%{transform:translateY(0);opacity:1} 100%{transform:translateY(-14px);opacity:0} }
+/* counter-style flicker between states */
+@keyframes ex-flip    { 0%,40%{opacity:1} 50%,90%{opacity:0} 100%{opacity:1} }
+/* packet rising into the cloud */
+@keyframes ex-lift    { 0%{transform:translateY(16px);opacity:0} 25%,60%{opacity:1} 100%{transform:translateY(-30px);opacity:0} }
+
+.ex-float    { animation: ex-float 5s ease-in-out infinite; }
+.ex-float-s  { animation: ex-float-s 4.2s ease-in-out infinite; }
+.ex-halo     { animation: ex-halo 6s ease-in-out infinite; transform-origin:center; }
+.ex-pulse    { animation: ex-pulse 3.4s ease-in-out infinite; transform-origin:center; }
+.ex-ping     { animation: ex-ping 2.8s ease-out infinite; transform-origin:center; }
+.ex-dash     { stroke-dasharray:6 8; animation: ex-dash 2.6s linear infinite; }
+.ex-draw     { stroke-dasharray:320; animation: ex-draw 4.5s ease-in-out infinite; }
+.ex-bar      { animation: ex-bar 3s ease-in-out infinite; transform-origin:bottom; }
+.ex-spin     { animation: ex-spin 18s linear infinite; transform-origin:center; }
+.ex-spin-rev { animation: ex-spin-rev 12s linear infinite; transform-origin:center; }
+.ex-blink    { animation: ex-blink 2.2s ease-in-out infinite; }
+.ex-pop      { animation: ex-pop 4s ease-in-out infinite; transform-origin:center; }
+.ex-type     { animation: ex-type 4s ease-in-out infinite; transform-origin:left; }
+.ex-scan     { animation: ex-scan 3.6s ease-in-out infinite; }
+.ex-feed     { animation: ex-feed 3.8s ease-in-out infinite; }
+.ex-drop     { animation: ex-drop 3.4s ease-in-out infinite; }
+.ex-swing    { animation: ex-swing 4s ease-in-out infinite; transform-origin:center; }
+.ex-travel   { animation: ex-travel 5s ease-in-out infinite; offset-rotate:0deg; }
+.ex-nav      { animation: ex-nav 5s ease-in-out infinite; }
+.ex-stack    { animation: ex-stack 4.4s ease-in-out infinite; }
+.ex-flip     { animation: ex-flip 3s steps(1,end) infinite; }
+.ex-lift     { animation: ex-lift 3.2s ease-in-out infinite; }
+
+.ex-d1 { animation-delay:.25s } .ex-d2 { animation-delay:.5s }
+.ex-d3 { animation-delay:.75s } .ex-d4 { animation-delay:1s }
+.ex-d5 { animation-delay:1.25s } .ex-d6 { animation-delay:1.5s }
+.ex-d7 { animation-delay:1.9s } .ex-d8 { animation-delay:2.3s }
+
+@media (prefers-reduced-motion: reduce) {
+  .ex-float,.ex-float-s,.ex-halo,.ex-pulse,.ex-ping,.ex-dash,.ex-draw,.ex-bar,
+  .ex-spin,.ex-spin-rev,.ex-blink,.ex-pop,.ex-type,.ex-scan,.ex-feed,.ex-drop,
+  .ex-swing,.ex-travel,.ex-nav,.ex-stack,.ex-flip,.ex-lift { animation: none; }
+  .ex-draw { stroke-dashoffset: 0; }
+  .ex-type,.ex-pop { transform: none; opacity: 1; }
+  .ex-feed,.ex-drop,.ex-stack,.ex-lift,.ex-scan { opacity: 1; }
+}

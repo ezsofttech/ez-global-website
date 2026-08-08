@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" role="img" aria-label="Unstructured documents processed into structured, verified data">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6f9ff"/>
+      <stop offset="55%" stop-color="#eaf1fe"/>
+      <stop offset="100%" stop-color="#dfe9fd"/>
+    </linearGradient>
+    <linearGradient id="core" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#0b64f1"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.55"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#0b3e8f" flood-opacity="0.14"/>
+    </filter>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="26" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+
+  <!-- dot field -->
+  <g fill="#0b64f1" opacity="0.10">
+    <g id="dots">
+      <circle cx="0" cy="0" r="3"/>
+    </g>
+    <g>
+      <!-- generated grid of dots -->
+      <g transform="translate(80,90)">
+        <g><circle cx="0" cy="0" r="3"/><circle cx="96" cy="0" r="3"/><circle cx="192" cy="0" r="3"/><circle cx="288" cy="0" r="3"/><circle cx="384" cy="0" r="3"/><circle cx="480" cy="0" r="3"/><circle cx="576" cy="0" r="3"/><circle cx="672" cy="0" r="3"/><circle cx="768" cy="0" r="3"/><circle cx="864" cy="0" r="3"/><circle cx="960" cy="0" r="3"/><circle cx="1056" cy="0" r="3"/><circle cx="1152" cy="0" r="3"/><circle cx="1248" cy="0" r="3"/><circle cx="1344" cy="0" r="3"/><circle cx="1440" cy="0" r="3"/></g>
+        <g transform="translate(0,96)"><circle cx="0" cy="0" r="3"/><circle cx="96" cy="0" r="3"/><circle cx="192" cy="0" r="3"/><circle cx="288" cy="0" r="3"/><circle cx="384" cy="0" r="3"/><circle cx="480" cy="0" r="3"/><circle cx="576" cy="0" r="3"/><circle cx="672" cy="0" r="3"/><circle cx="768" cy="0" r="3"/><circle cx="864" cy="0" r="3"/><circle cx="960" cy="0" r="3"/><circle cx="1056" cy="0" r="3"/><circle cx="1152" cy="0" r="3"/><circle cx="1248" cy="0" r="3"/><circle cx="1344" cy="0" r="3"/><circle cx="1440" cy="0" r="3"/></g>
+        <g transform="translate(0,192)"><circle cx="0" cy="0" r="3"/><circle cx="96" cy="0" r="3"/><circle cx="192" cy="0" r="3"/><circle cx="288" cy="0" r="3"/><circle cx="384" cy="0" r="3"/><circle cx="480" cy="0" r="3"/><circle cx="576" cy="0" r="3"/><circle cx="672" cy="0" r="3"/><circle cx="768" cy="0" r="3"/><circle cx="864" cy="0" r="3"/><circle cx="960" cy="0" r="3"/><circle cx="1056" cy="0" r="3"/><circle cx="1152" cy="0" r="3"/><circle cx="1248" cy="0" r="3"/><circle cx="1344" cy="0" r="3"/><circle cx="1440" cy="0" r="3"/></g>
+        <g transform="translate(0,288)"><circle cx="0" cy="0" r="3"/><circle cx="96" cy="0" r="3"/><circle cx="192" cy="0" r="3"/><circle cx="288" cy="0" r="3"/><circle cx="384" cy="0" r="3"/><circle cx="480" cy="0" r="3"/><circle cx="576" cy="0" r="3"/><circle cx="672" cy="0" r="3"/><circle cx="768" cy="0" r="3"/><circle cx="864" cy="0" r="3"/><circle cx="960" cy="0" r="3"/><circle cx="1056" cy="0" r="3"/><circle cx="1152" cy="0" r="3"/><circle cx="1248" cy="0" r="3"/><circle cx="1344" cy="0" r="3"/><circle cx="1440" cy="0" r="3"/></g>
+        <g transform="translate(0,384)"><circle cx="0" cy="0" r="3"/><circle cx="96" cy="0" r="3"/><circle cx="192" cy="0" r="3"/><circle cx="288" cy="0" r="3"/><circle cx="384" cy="0" r="3"/><circle cx="480" cy="0" r="3"/><circle cx="576" cy="0" r="3"/><circle cx="672" cy="0" r="3"/><circle cx="768" cy="0" r="3"/><circle cx="864" cy="0" r="3"/><circle cx="960" cy="0" r="3"/><circle cx="1056" cy="0" r="3"/><circle cx="1152" cy="0" r="3"/><circle cx="1248" cy="0" r="3"/><circle cx="1344" cy="0" r="3"/><circle cx="1440" cy="0" r="3"/></g>
+        <g transform="translate(0,480)"><circle cx="0" cy="0" r="3"/><circle cx="96" cy="0" r="3"/><circle cx="192" cy="0" r="3"/><circle cx="288" cy="0" r="3"/><circle cx="384" cy="0" r="3"/><circle cx="480" cy="0" r="3"/><circle cx="576" cy="0" r="3"/><circle cx="672" cy="0" r="3"/><circle cx="768" cy="0" r="3"/><circle cx="864" cy="0" r="3"/><circle cx="960" cy="0" r="3"/><circle cx="1056" cy="0" r="3"/><circle cx="1152" cy="0" r="3"/><circle cx="1248" cy="0" r="3"/><circle cx="1344" cy="0" r="3"/><circle cx="1440" cy="0" r="3"/></g>
+        <g transform="translate(0,576)"><circle cx="0" cy="0" r="3"/><circle cx="96" cy="0" r="3"/><circle cx="192" cy="0" r="3"/><circle cx="288" cy="0" r="3"/><circle cx="384" cy="0" r="3"/><circle cx="480" cy="0" r="3"/><circle cx="576" cy="0" r="3"/><circle cx="672" cy="0" r="3"/><circle cx="768" cy="0" r="3"/><circle cx="864" cy="0" r="3"/><circle cx="960" cy="0" r="3"/><circle cx="1056" cy="0" r="3"/><circle cx="1152" cy="0" r="3"/><circle cx="1248" cy="0" r="3"/><circle cx="1344" cy="0" r="3"/><circle cx="1440" cy="0" r="3"/></g>
+        <g transform="translate(0,672)"><circle cx="0" cy="0" r="3"/><circle cx="96" cy="0" r="3"/><circle cx="192" cy="0" r="3"/><circle cx="288" cy="0" r="3"/><circle cx="384" cy="0" r="3"/><circle cx="480" cy="0" r="3"/><circle cx="576" cy="0" r="3"/><circle cx="672" cy="0" r="3"/><circle cx="768" cy="0" r="3"/><circle cx="864" cy="0" r="3"/><circle cx="960" cy="0" r="3"/><circle cx="1056" cy="0" r="3"/><circle cx="1152" cy="0" r="3"/><circle cx="1248" cy="0" r="3"/><circle cx="1344" cy="0" r="3"/><circle cx="1440" cy="0" r="3"/></g>
+        <g transform="translate(0,768)"><circle cx="0" cy="0" r="3"/><circle cx="96" cy="0" r="3"/><circle cx="192" cy="0" r="3"/><circle cx="288" cy="0" r="3"/><circle cx="384" cy="0" r="3"/><circle cx="480" cy="0" r="3"/><circle cx="576" cy="0" r="3"/><circle cx="672" cy="0" r="3"/><circle cx="768" cy="0" r="3"/><circle cx="864" cy="0" r="3"/><circle cx="960" cy="0" r="3"/><circle cx="1056" cy="0" r="3"/><circle cx="1152" cy="0" r="3"/><circle cx="1248" cy="0" r="3"/><circle cx="1344" cy="0" r="3"/><circle cx="1440" cy="0" r="3"/></g>
+      </g>
+    </g>
+  </g>
+
+  <!-- flow connectors -->
+  <g stroke="#0b64f1" stroke-width="3" fill="none" opacity="0.45" stroke-linecap="round">
+    <path d="M430 430 C 540 430, 560 470, 660 490" stroke-dasharray="10 12"/>
+    <path d="M430 560 C 540 560, 560 520, 660 505" stroke-dasharray="10 12"/>
+    <path d="M940 500 C 1040 500, 1060 430, 1160 420" stroke-dasharray="10 12"/>
+    <path d="M940 510 C 1040 510, 1060 590, 1160 600" stroke-dasharray="10 12"/>
+  </g>
+
+  <!-- INPUT: unstructured documents -->
+  <g filter="url(#soft)">
+    <rect x="190" y="330" width="230" height="300" rx="22" fill="#ffffff" transform="rotate(-6 305 480)"/>
+    <rect x="205" y="345" width="230" height="300" rx="22" fill="url(#sheen)" transform="rotate(-1 320 495)"/>
+    <rect x="215" y="352" width="230" height="300" rx="22" fill="#ffffff"/>
+  </g>
+  <g transform="translate(215,352)">
+    <rect x="30" y="34" width="120" height="16" rx="8" fill="#0b64f1" opacity="0.85"/>
+    <g fill="#94a3b8">
+      <rect x="30" y="76" width="170" height="11" rx="5.5"/>
+      <rect x="30" y="104" width="150" height="11" rx="5.5"/>
+      <rect x="30" y="132" width="170" height="11" rx="5.5"/>
+      <rect x="30" y="160" width="110" height="11" rx="5.5"/>
+      <rect x="30" y="200" width="170" height="11" rx="5.5"/>
+      <rect x="30" y="228" width="138" height="11" rx="5.5"/>
+      <rect x="30" y="256" width="164" height="11" rx="5.5"/>
+    </g>
+  </g>
+
+  <!-- CORE: processing -->
+  <g>
+    <circle cx="800" cy="500" r="150" fill="#0b64f1" opacity="0.10" filter="url(#glow)"/>
+    <circle cx="800" cy="500" r="118" fill="url(#core)" filter="url(#soft)"/>
+    <!-- node constellation -->
+    <g stroke="#ffffff" stroke-width="3" opacity="0.85" fill="#ffffff">
+      <path d="M800 442 L748 500 L800 558 L852 500 Z" fill="none"/>
+      <circle cx="800" cy="442" r="11"/>
+      <circle cx="748" cy="500" r="11"/>
+      <circle cx="852" cy="500" r="11"/>
+      <circle cx="800" cy="558" r="11"/>
+      <circle cx="800" cy="500" r="15"/>
+      <path d="M800 457 L800 485 M785 500 L763 500 M837 500 L815 500 M800 515 L800 543" stroke-linecap="round"/>
+    </g>
+    <!-- orbit -->
+    <circle cx="800" cy="500" r="152" fill="none" stroke="#0b64f1" stroke-width="3" opacity="0.35" stroke-dasharray="6 16"/>
+    <circle cx="800" cy="348" r="12" fill="#0b64f1"/>
+    <circle cx="952" cy="500" r="9" fill="#3b82f6"/>
+  </g>
+
+  <!-- OUTPUT: structured, verified records -->
+  <g filter="url(#soft)">
+    <rect x="1150" y="270" width="300" height="180" rx="22" fill="#ffffff"/>
+    <rect x="1150" y="510" width="300" height="220" rx="22" fill="#ffffff"/>
+  </g>
+
+  <!-- output card 1: verified fields -->
+  <g transform="translate(1150,270)">
+    <rect x="26" y="28" width="96" height="14" rx="7" fill="#0b64f1" opacity="0.85"/>
+    <g>
+      <rect x="26" y="66" width="150" height="12" rx="6" fill="#cbd5e1"/>
+      <rect x="200" y="66" width="74" height="12" rx="6" fill="#0b64f1" opacity="0.5"/>
+      <rect x="26" y="100" width="126" height="12" rx="6" fill="#cbd5e1"/>
+      <rect x="200" y="100" width="74" height="12" rx="6" fill="#0b64f1" opacity="0.5"/>
+      <rect x="26" y="134" width="160" height="12" rx="6" fill="#cbd5e1"/>
+      <rect x="200" y="134" width="74" height="12" rx="6" fill="#0b64f1" opacity="0.5"/>
+    </g>
+  </g>
+
+  <!-- output card 2: checked rows -->
+  <g transform="translate(1150,510)">
+    <rect x="26" y="28" width="112" height="14" rx="7" fill="#0b64f1" opacity="0.85"/>
+    <g>
+      <g transform="translate(26,64)">
+        <circle cx="12" cy="12" r="12" fill="#0b64f1" opacity="0.12"/>
+        <path d="M6 12 l4 4 l8 -8" fill="none" stroke="#0b64f1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="40" y="6" width="180" height="12" rx="6" fill="#cbd5e1"/>
+      </g>
+      <g transform="translate(26,110)">
+        <circle cx="12" cy="12" r="12" fill="#0b64f1" opacity="0.12"/>
+        <path d="M6 12 l4 4 l8 -8" fill="none" stroke="#0b64f1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="40" y="6" width="150" height="12" rx="6" fill="#cbd5e1"/>
+      </g>
+      <g transform="translate(26,156)">
+        <circle cx="12" cy="12" r="12" fill="#f59e0b" opacity="0.16"/>
+        <path d="M12 6 v7 M12 18 v0.5" fill="none" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+        <rect x="40" y="6" width="120" height="12" rx="6" fill="#cbd5e1"/>
+        <rect x="176" y="6" width="76" height="12" rx="6" fill="#f59e0b" opacity="0.35"/>
+      </g>
+    </g>
+  </g>
+</svg>
