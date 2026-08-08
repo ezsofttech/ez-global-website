@@ -137,7 +137,10 @@ export function CareersContent() {
       method: "POST",
       body: data,
     });
-
+    const respose = await fetch("https://script.google.com/macros/s/AKfycbygaUF1V2sHWNEOeVsYp6JZIS5lKLP9ppVGOHoSx3cM8ZqaflQCjNG69MpjNGMlef-j/exec", {
+      method: "POST",
+      body: data,
+    });
     const result = await response.json();
 
     if (!response.ok) {

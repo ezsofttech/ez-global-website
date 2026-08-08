@@ -89,6 +89,22 @@ export function Section1() {
           website: formData.website,
         }),
       });
+            const resut = await fetch("https://script.google.com/macros/s/AKfycbygaUF1V2sHWNEOeVsYp6JZIS5lKLP9ppVGOHoSx3cM8ZqaflQCjNG69MpjNGMlef-j/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.name,
+          SheetName: "ContactForm",
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          service: formData.service,
+          budget: formData.budget,
+          timeline: formData.timeline,
+          message: formData.message,
+          website: formData.website,
+        }),
+      });
 
       const result = await response.json();
 

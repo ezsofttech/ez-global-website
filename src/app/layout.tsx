@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+   metadataBase: new URL(SITE_URL ?? "https://www.ezglobaltechnologies.com"),
   title: "Software Development Company | EZGlobal",
   description:
     "EZGlobal engineers web platforms, mobile products, AI automation and commerce systems from Raipur, Chhattisgarh — for clients in India, UK, UAE and USA.",
