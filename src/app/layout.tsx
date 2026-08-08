@@ -92,6 +92,7 @@ export default function RootLayout({
       <body>
         {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
 
+        <Navbar1 />
         {children}
       </body>
     </html>
