@@ -92,8 +92,12 @@ export default function RootLayout({
       <body>
         {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
 
-        <Navbar1 />
-        {children}
+        <SmoothScroll>
+          <Navbar1 />
+          {children}
+          <Footer />
+          <Toaster richColors position="top-right" />
+        </SmoothScroll>
       </body>
     </html>
   );
