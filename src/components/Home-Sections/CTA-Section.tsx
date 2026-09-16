@@ -31,10 +31,10 @@ export function CTASection() {
               </Link>
               
               <a 
-                href="tel:+918962370822" 
+                href="tel:+919201949081" 
                 className="w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-white border border-[#0A51DF] text-[#111827] hover:bg-neutral-50 px-8 py-4 rounded-xl font-semibold text-[15px] transition-colors"
               >
-                Call +91 89623 70822
+                Call +91 92019 49081
                 <Phone className="w-5 h-5 text-[#0A51DF]" />
               </a>
             </div>

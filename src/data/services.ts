@@ -407,7 +407,7 @@ export const services: Service[] = [
     heroSubline:
       "Operational systems that handle the invoicing, inventory, approvals and reconciliation currently consuming your team's capacity.",
     primaryCta: { label: "Request a Demonstration", href: "/contact" },
-    secondaryCta: { label: "Call +91 89623 70822", href: "tel:+918962370822" },
+    secondaryCta: { label: "Call +91 92019 49081", href: "tel:+919201949081" },
     overview: [
       "Every growing business accumulates manual process. A spreadsheet that someone maintains by hand. A reconciliation that takes two days each month. An approval that waits in an inbox. Individually these are minor; collectively they consume more capacity than most organisations realise, and they scale badly — the cost of each rises in direct proportion to your growth.",
       "We build systems that absorb this work. Invoicing, inventory movement, purchase and sales reconciliation, approval routing and reporting are brought into a single operational platform your team can run without specialist training.",

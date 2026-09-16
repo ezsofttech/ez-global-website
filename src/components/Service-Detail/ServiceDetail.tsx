@@ -390,10 +390,10 @@ export default function ServiceDetail({
               <Calendar className="w-5 h-5 opacity-90" />
             </Link>
             <a
-              href="tel:+918962370822"
+              href="tel:+919201949081"
               className="inline-flex justify-center items-center gap-3 bg-white border border-[#0b64f1] text-neutral-900 hover:bg-neutral-50 px-8 py-4 rounded-xl font-semibold text-[15px] transition-colors"
             >
-              Call +91 89623 70822
+              Call +91 92019 49081
               <Phone className="w-5 h-5 text-[#0b64f1]" />
             </a>
           </div>

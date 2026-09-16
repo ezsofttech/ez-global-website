@@ -22,9 +22,9 @@ export const COMPANY = {
   name: "EZGlobal",
   legalName: "EZ Soft Tech",
   url: SITE_URL,
-  telephone: "+91 89623 70822",
+  telephone: "+91 92019 49081",
   /** E.164 form, for tel: links */
-  telephoneHref: "tel:+918962370822",
+  telephoneHref: "tel:+919201949081",
   email: {
     general: "info@ezglobaltechnologies.com",
     careers: "careers@ezglobaltechnologies.com",
