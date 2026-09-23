@@ -72,6 +72,23 @@ export async function POST(request: NextRequest) {
       )
       .join("");
 
+    // Verify email credentials / environment configuration
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.HR_EMAIL) {
+      console.error(
+        "Invalid credentials or configuration: Missing EMAIL_USER, EMAIL_PASS, or HR_EMAIL environment variables."
+      );
+      return NextResponse.json(
+        {
+          success: false,
+          error: "INVALID_CREDENTIALS",
+          message: "Invalid credentials: Email environment variables are missing or misconfigured.",
+        },
+        {
+          status: 500,
+        }
+      );
+    }
+
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.HR_EMAIL,
@@ -143,13 +160,36 @@ export async function POST(request: NextRequest) {
       success: true,
       message: "Message sent successfully.",
     });
-  } catch (err) {
-    console.error(err);
+  } catch (err: any) {
+    console.error("Contact form submission error:", err);
+
+    const errorMessage = err?.message || "";
+    const isAuthError =
+      err?.code === "EAUTH" ||
+      err?.responseCode === 535 ||
+      errorMessage.toLowerCase().includes("invalid login") ||
+      errorMessage.toLowerCase().includes("bad credentials") ||
+      errorMessage.toLowerCase().includes("username and password not accepted") ||
+      errorMessage.toLowerCase().includes("auth");
+
+    if (isAuthError) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "INVALID_CREDENTIALS",
+          message: "Invalid credentials: SMTP authentication failed. Please check EMAIL_USER and EMAIL_PASS.",
+        },
+        {
+          status: 500,
+        }
+      );
+    }
 
     return NextResponse.json(
       {
         success: false,
-        message: "Something went wrong.",
+        error: "INTERNAL_SERVER_ERROR",
+        message: "Internal server error occurred.",
       },
       {
         status: 500,

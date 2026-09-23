@@ -109,7 +109,11 @@ export function Section1() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.message || "Something went wrong.");
+        if (response.status >= 500) {
+          console.error("Server/credentials error:", result);
+          throw new Error("Something went wrong. Please try again later.");
+        }
+        throw new Error(result.message || "Something went wrong. Please try again later.");
       }
 
       toast.success(

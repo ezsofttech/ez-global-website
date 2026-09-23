@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import Link from "next/link";
+import { Trash } from 'lucide-react';
 import {
   CheckCircle2,
   MapPin,
@@ -97,10 +98,11 @@ export function CareersContent() {
     phone: "",
     role: ROLE_TITLES[0],
     message: "",
-    resume:null as File|null,
+    resume: null as File | null,
   });
 
   const [resumeName, setResumeName] = useState("");
+  const [resumeError, setResumeError] = useState<string | null>(null);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -113,10 +115,73 @@ export function CareersContent() {
     }));
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) {
+      setResumeName("");
+      setFormData((prev) => ({ ...prev, resume: null }));
+      return;
+    }
+
+    // Validate size (Max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      const err = "Resume must be less than 5MB.";
+      setResumeError(err);
+      toast.error(err);
+      e.target.value = "";
+      setResumeName("");
+      setFormData((prev) => ({ ...prev, resume: null }));
+      return;
+    }
+
+    // Validate type (.pdf, .doc, .docx)
+    const allowedExtensions = [".pdf", ".doc", ".docx"];
+    const fileName = file.name.toLowerCase();
+    const isAllowed = allowedExtensions.some((ext) => fileName.endsWith(ext));
+
+    if (!isAllowed) {
+      const err = "Only PDF, DOC, and DOCX files are allowed.";
+      setResumeError(err);
+      toast.error(err);
+      e.target.value = "";
+      setResumeName("");
+      setFormData((prev) => ({ ...prev, resume: null }));
+      return;
+    }
+
+    setResumeError(null);
+    setResumeName(file.name);
+    setFormData((prev) => ({
+      ...prev,
+      resume: file,
+    }));
+  };
+
+  const handleRemoveResume = () => {
+    setFormData((prev) => ({ ...prev, resume: null }));
+    setResumeName("");
+    setResumeError(null);
+    const fileInput = document.getElementById("resume") as HTMLInputElement | null;
+    if (fileInput) {
+      fileInput.value = "";
+    }
+  };
+
   const handleSubmit = async (
   e: React.FormEvent<HTMLFormElement>
 ) => {
   e.preventDefault();
+
+  if (!formData.resume) {
+    const errorMsg = "Please upload your resume to submit your application.";
+    setResumeError(errorMsg);
+    toast.error(errorMsg);
+    const resumeEl = document.getElementById("resume-upload-section");
+    if (resumeEl) {
+      resumeEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    return;
+  }
 
   setIsSubmitting(true);
 
@@ -144,7 +209,11 @@ export function CareersContent() {
     const result = await response.json();
 
     if (!response.ok) {
-      throw new Error(result.message);
+      if (response.status >= 500) {
+        console.error("Server/credentials error:", result);
+        throw new Error("Something went wrong. Please try again later.");
+      }
+      throw new Error(result.message || "Something went wrong. Please try again later.");
     }
 
     toast.success(
@@ -159,15 +228,17 @@ export function CareersContent() {
       message: "",
       resume: null,
     });
+    setResumeName("");
+    setResumeError(null);
 
     // File input reset
-    (
-      document.querySelector(
-        'input[type="file"]'
-      ) as HTMLInputElement
-    ).value = "";
+    const fileInput = document.getElementById("resume") as HTMLInputElement | null;
+    if (fileInput) {
+      fileInput.value = "";
+    }
   } catch (err: any) {
-    toast.error(err.message || "Submission Failed");
+    console.error("Submission failed:", err);
+    toast.error(err.message || "Something went wrong. Please try again later.");
   } finally {
     setIsSubmitting(false);
   }
@@ -450,67 +521,103 @@ export function CareersContent() {
               />
             </div>
             {/* Resume upload */}
-            <div className="space-y-2">
+            <div id="resume-upload-section" className="space-y-2">
+              <div className="flex items-center justify-between">
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
                   Resume <span className="text-blue-600">*</span>
                 </label>
+                {formData.resume && (
+                  <button
+                    type="button"
+                    onClick={handleRemoveResume}
+                    className="text-xs flex gap-1 text-red-500 hover:text-red-700 font-semibold cursor-pointer transition-colors"
+                  >
+                    <Trash className="w-4 h-4"/> Remove file
+                  </button>
+                )}
+              </div>
 
-                <label
-                  htmlFor="resume"
-                  className="flex items-center justify-between w-full px-5 py-4 rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 cursor-pointer group"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center group-hover:bg-blue-600 transition-colors">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-6 h-6 text-blue-600 group-hover:text-white"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M12 11v8m0-8l-3 3m3-3l3 3"
-                        />
-                      </svg>
-                    </div>
-
-                    <div>
-                      <p className="text-sm font-semibold text-slate-800">
-                        {resumeName || "Upload your Resume"}
-                      </p>
-
-                      <p className="text-xs text-slate-500 mt-1">
-                        PDF, DOC or DOCX • Max 5 MB
-                      </p>
-                    </div>
+              <label
+                htmlFor="resume"
+                className={`flex items-center justify-between gap-3 w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-xl border-2 border-dashed transition-all duration-300 cursor-pointer group ${
+                  resumeError
+                    ? "border-red-400 bg-red-50/70 hover:border-red-500 hover:bg-red-50"
+                    : formData.resume
+                    ? "border-blue-500 bg-blue-50/60 hover:bg-blue-50"
+                    : "border-slate-300 bg-slate-50 hover:border-blue-500 hover:bg-blue-50"
+                }`}
+              >
+                <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
+                  <div
+                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex-shrink-0 flex items-center justify-center transition-colors ${
+                      resumeError
+                        ? "bg-red-100 text-red-600 group-hover:bg-red-200"
+                        : formData.resume
+                        ? "bg-blue-600 text-white"
+                        : "bg-blue-100 text-blue-600 group-hover:bg-blue-600 group-hover:text-white"
+                    }`}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-5 h-5 sm:w-6 sm:h-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M12 11v8m0-8l-3 3m3-3l3 3"
+                      />
+                    </svg>
                   </div>
 
-                  <span className="text-xs font-bold px-3 py-1.5 rounded-lg bg-blue-600 text-white">
-                    Browse
-                  </span>
-                </label>
+                  <div className="min-w-0 flex-1">
+                    <p
+                      title={resumeName || "Upload your Resume"}
+                      className={`text-sm font-semibold truncate ${
+                        resumeError ? "text-red-700" : "text-slate-800"
+                      }`}
+                    >
+                      {resumeName || "Upload your Resume"}
+                    </p>
 
-                <input
-                  id="resume"
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  required
-                  className="hidden"
-                  onChange={(e) => {
-                    const file = e.target.files?.[0];
+                    <p className="text-xs text-slate-500 mt-0.5 truncate">
+                      PDF, DOC or DOCX • Max 5 MB
+                    </p>
+                  </div>
+                </div>
 
-                    setResumeName(file?.name || "");
+                <span
+                  className={`text-xs font-bold px-3 py-1.5 rounded-lg transition-colors flex-shrink-0 whitespace-nowrap shadow-sm ${
+                    resumeError
+                      ? "bg-red-600 text-white"
+                      : "bg-blue-600 text-white group-hover:bg-blue-700"
+                  }`}
+                >
+                  {formData.resume ? "Change" : "Browse"}
+                </span>
+              </label>
 
-                    setFormData((prev) => ({
-                      ...prev,
-                      resume: file || null,
-                    }));
-                  }}
-                />
-              </div>
+              {resumeError && (
+                <p className="text-xs text-red-600 font-medium flex items-center gap-1.5 mt-1.5 animate-fadeIn">
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-red-600 flex-shrink-0" />
+                  {resumeError}
+                </p>
+              )}
+
+              <input
+                id="resume"
+                type="file"
+                accept=".pdf,.doc,.docx"
+                className="hidden"
+                onClick={(e) => {
+                  (e.target as HTMLInputElement).value = "";
+                }}
+                onChange={handleFileChange}
+              />
+            </div>
 
             {/* Submit Button */}
             <button

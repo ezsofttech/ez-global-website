@@ -15,10 +15,21 @@ export async function POST(request: NextRequest) {
     const resume = formData.get("resume") as File | null;
 
     // Validation
-    if (!fullName || !email || !phone || !role || !resume) {
+    if (!fullName || !email || !phone || !role) {
       return NextResponse.json(
         {
           message: "Please fill all required fields.",
+        },
+        {
+          status: 400,
+        }
+      );
+    }
+
+    if (!resume) {
+      return NextResponse.json(
+        {
+          message: "Please upload your resume.",
         },
         {
           status: 400,
@@ -59,6 +70,23 @@ export async function POST(request: NextRequest) {
     // Convert file to Buffer
     const bytes = await resume.arrayBuffer();
     const buffer = Buffer.from(bytes);
+
+    // Verify email credentials / environment configuration
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.HR_EMAIL) {
+      console.error(
+        "Invalid credentials or configuration: Missing EMAIL_USER, EMAIL_PASS, or HR_EMAIL environment variables."
+      );
+      return NextResponse.json(
+        {
+          success: false,
+          error: "INVALID_CREDENTIALS",
+          message: "Invalid credentials: Email environment variables are missing or misconfigured.",
+        },
+        {
+          status: 500,
+        }
+      );
+    }
 
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
@@ -321,13 +349,36 @@ This email was generated automatically from the Careers application form.
       success: true,
       message: "Application submitted successfully.",
     });
-  } catch (error) {
-    console.error(error);
+  } catch (error: any) {
+    console.error("Career application error:", error);
+
+    const errorMessage = error?.message || "";
+    const isAuthError =
+      error?.code === "EAUTH" ||
+      error?.responseCode === 535 ||
+      errorMessage.toLowerCase().includes("invalid login") ||
+      errorMessage.toLowerCase().includes("bad credentials") ||
+      errorMessage.toLowerCase().includes("username and password not accepted") ||
+      errorMessage.toLowerCase().includes("auth");
+
+    if (isAuthError) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "INVALID_CREDENTIALS",
+          message: "Invalid credentials: SMTP authentication failed. Please check EMAIL_USER and EMAIL_PASS.",
+        },
+        {
+          status: 500,
+        }
+      );
+    }
 
     return NextResponse.json(
       {
         success: false,
-        message: "Something went wrong.",
+        error: "INTERNAL_SERVER_ERROR",
+        message: "Internal server error occurred.",
       },
       {
         status: 500,
