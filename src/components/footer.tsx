@@ -26,7 +26,7 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 max-w-7xl w-full">
           {/* Column 1 - Brand Info */}
           <div className="lg:col-span-4 flex flex-col items-start">
-            <img className="w-50" src="/EZGLOBAL1.webp" alt="EZGlobal" />
+            <img className="w-50 -ml-7" src="/EZGLOBAL1.webp" alt="EZGlobal" />
 
             <p className="text-sm text-neutral-400 leading-relaxed mt-1 max-w-sm">
               {/*
