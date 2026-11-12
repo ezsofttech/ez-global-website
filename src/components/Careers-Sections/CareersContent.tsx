@@ -513,7 +513,7 @@ export function CareersContent() {
             <div id="resume-upload-section" className="space-y-2">
               <div className="flex items-center justify-between">
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                  Resume <span className="text-blue-600">*</span>
+                  Resume <span className="text-blue-600">*</span> <span className="text-red-600">upload file upto 4mb </span>
                 </label>
                 {formData.resume && (
                   <button
@@ -573,7 +573,7 @@ export function CareersContent() {
                     </p>
 
                     <p className="text-xs text-slate-500 mt-0.5 truncate">
-                      PDF, DOC or DOCX
+                      PDF, DOC or DOCX<span className="text-red-500">* upload file upto 4mb</span>  
                     </p>
                   </div>
                 </div>
