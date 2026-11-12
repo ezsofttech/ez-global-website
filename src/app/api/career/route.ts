@@ -37,18 +37,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Maximum 5 MB
-    if (resume.size > 5 * 1024 * 1024) {
-      return NextResponse.json(
-        {
-          message: "Resume must be less than 5MB.",
-        },
-        {
-          status: 400,
-        }
-      );
-    }
-
     // Allowed file types
     const allowedTypes = [
       "application/pdf",

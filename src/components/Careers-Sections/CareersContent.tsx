@@ -123,17 +123,6 @@ export function CareersContent() {
       return;
     }
 
-    // Validate size (Max 5MB)
-    if (file.size > 5 * 1024 * 1024) {
-      const err = "Resume must be less than 5MB.";
-      setResumeError(err);
-      toast.error(err);
-      e.target.value = "";
-      setResumeName("");
-      setFormData((prev) => ({ ...prev, resume: null }));
-      return;
-    }
-
     // Validate type (.pdf, .doc, .docx)
     const allowedExtensions = [".pdf", ".doc", ".docx"];
     const fileName = file.name.toLowerCase();
@@ -584,7 +573,7 @@ export function CareersContent() {
                     </p>
 
                     <p className="text-xs text-slate-500 mt-0.5 truncate">
-                      PDF, DOC or DOCX • Max 5 MB
+                      PDF, DOC or DOCX
                     </p>
                   </div>
                 </div>
